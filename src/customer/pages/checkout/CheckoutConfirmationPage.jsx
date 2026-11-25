@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import checkoutService from "./services/checkoutService";
 import Button from "../../../shared/components/ui/Button";
 import Input from "../../../shared/components/ui/Input";
+import getAssetUrl from "../../../shared/utils/getAssetUrl";
 
 function CheckoutConfirmationPage() {
   const location = useLocation();
@@ -180,13 +181,9 @@ function CheckoutConfirmationPage() {
                 className="flex items-center gap-4 border-b py-4 last:border-0"
               >
                 <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-gray-50">
-                  {product.imageUrl ? (
+                  {getAssetUrl(product.imageUrl) ? (
                     <img
-                      src={
-                        product.imageUrl.startsWith("http")
-                          ? product.imageUrl
-                          : `${import.meta.env.VITE_ASSET_BASE_URL}${product.imageUrl}`
-                      }
+                      src={getAssetUrl(product.imageUrl)}
                       alt={product.name}
                       className="h-full w-full object-contain"
                     />

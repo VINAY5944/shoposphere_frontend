@@ -7,6 +7,7 @@ import cartService from "../cart/services/cartService";
 
 import Button from "../../../shared/components/ui/Button";
 import Loader from "../../../shared/components/common/Loader";
+import getAssetUrl from "../../../shared/utils/getAssetUrl";
 import { toast } from "sonner";
 
 const getAvailableQuantity = (stockQuantity) => {
@@ -183,9 +184,7 @@ function ProductDetailsPage() {
     product.compareAtPrice &&
     compareAtPrice > price;
 
-  const imageUrl = product.imageUrl
-    ? `${import.meta.env.VITE_ASSET_BASE_URL}${product.imageUrl}`
-    : null;
+  const imageUrl = getAssetUrl(product.imageUrl);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">

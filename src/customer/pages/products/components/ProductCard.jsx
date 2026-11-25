@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import Badge from "../../../../shared/components/ui/Badge";
 import Button from "../../../../shared/components/ui/Button";
+import getAssetUrl from "../../../../shared/utils/getAssetUrl";
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
@@ -18,9 +19,7 @@ function ProductCard({ product }) {
       )
     : 0;
 
-  const imageUrl = product.imageUrl
-    ? `${import.meta.env.VITE_ASSET_BASE_URL}${product.imageUrl}`
-    : null;
+  const imageUrl = getAssetUrl(product.imageUrl);
 
   const handleViewDetails = () => {
     navigate(`/customer/products/${product.id}`);

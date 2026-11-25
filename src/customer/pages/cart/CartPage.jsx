@@ -5,6 +5,7 @@ import cartService from "./services/cartService";
 import Button from "../../../shared/components/ui/Button";
 import Checkbox from "../../../shared/components/ui/Checkbox";
 import Loader from "../../../shared/components/common/Loader";
+import getAssetUrl from "../../../shared/utils/getAssetUrl";
 import { toast } from "sonner";
 
 function CartPage() {
@@ -92,12 +93,6 @@ function CartPage() {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     })}`;
-
-  const getImageUrl = (imageUrl) => {
-    if (!imageUrl) return null;
-
-    return `${import.meta.env.VITE_ASSET_BASE_URL}${imageUrl}`;
-  };
 
   const handleCheckout = () => {
     if (selectedProducts.length === 0) {
@@ -191,7 +186,7 @@ function CartPage() {
             </div>
 
             {items.map((item) => {
-              const imageUrl = getImageUrl(item.imageUrl);
+              const imageUrl = getAssetUrl(item.imageUrl);
 
               return (
                 <div
